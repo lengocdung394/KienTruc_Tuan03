@@ -1,8 +1,6 @@
 package org.example.state;
 
 public class NewState implements OrderState {
-
-
     public NewState() {
     }
 
