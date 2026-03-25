@@ -1,22 +1,17 @@
 package org.example.state;
 
 public class Product {
-    private double price;
-    private SaleProductState state;
+    private ProductState state;
 
-    public Product(double price) {
-        this.price = price;
+    public Product() {
+        state = new NewStateProduct(); // ban đầu
     }
 
-    public SaleProductState getState() {
-        return state;
-    }
-
-    public void setState(SaleProductState state) {
+    public void setState(ProductState state) {
         this.state = state;
     }
-    public double calculateTotal() {
-        double tax = state.calculateTax(price);
-        return price + tax;
+
+    public void process() {
+        state.handle(this);
     }
 }
