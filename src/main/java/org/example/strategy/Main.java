@@ -4,9 +4,8 @@ public class Main {
 
         public static void main(String[] args) {
             Order order = new Order("Đơn hàng 1");
-
-            // Chọn chiến lược
-
+            order.setShippingStrategy(new FastShipping());
+            order.setRefundStrategy(new CashRefund());
             // Quy trình bình thường
             order.process(); // Mới tạo → Đang xử lý
             order.process(); // Đang xử lý → Đã giao
@@ -14,7 +13,7 @@ public class Main {
 
             System.out.println("---- Hủy đơn thử ----");
             Order order2 = new Order("Đơn hàng 2");
-
+            order2.setRefundStrategy(new CashRefund());
             order2.cancel(); // Hủy ngay
         }
 
